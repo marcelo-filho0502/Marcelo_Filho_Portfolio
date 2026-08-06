@@ -1,47 +1,9 @@
-import { useEffect } from 'react'
-import Navbar from './components/Navbar/Navbar'
-import Hero from './components/Hero/Hero'
-import About from './components/About/About'
-import Projects from './components/Projec/Projects'
-import Skills from './components/Skillss/Skills'
-import Contact from './components/Contact/Contact'
-import './styles/global.css'
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import App from './App'
 
-function App() {
-  useEffect(() => {
-    // Intersection Observer for scroll reveal
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible')
-          }
-        })
-      },
-      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
-    )
-
-    const elements = document.querySelectorAll('.reveal')
-    elements.forEach((el) => observer.observe(el))
-
-    return () => observer.disconnect()
-  }, [])
-
-  return (
-    <div className="app">
-      <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Contact />
-      </main>
-      <footer className="footer">
-        <p>© 2025 Marcelo Filho · Feito com React + Vite</p>
-      </footer>
-    </div>
-  )
-}
-
-export default App
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <App />
+  </StrictMode>
+)
