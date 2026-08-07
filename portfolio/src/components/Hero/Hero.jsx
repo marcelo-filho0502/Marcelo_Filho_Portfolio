@@ -3,9 +3,9 @@ import './Hero.css'
 
 const ROLES = [
   'Desenvolvedor Frontend',
-  'Desenvolvedor React',
-  'Desenvolvedor UI/UX',
-  'Criador de Experiências Web',
+  'Desenvolvedor Full Stack',
+  'Engenheiro de Software',
+  'Prompt Engineer & Dev',
 ]
 
 export default function Hero() {
@@ -16,7 +16,6 @@ export default function Hero() {
   useEffect(() => {
     const current = ROLES[roleIndex]
     let timeout
-
     if (!deleting && displayed.length < current.length) {
       timeout = setTimeout(() => setDisplayed(current.slice(0, displayed.length + 1)), 60)
     } else if (!deleting && displayed.length === current.length) {
@@ -27,64 +26,40 @@ export default function Hero() {
       setDeleting(false)
       setRoleIndex((i) => (i + 1) % ROLES.length)
     }
-
     return () => clearTimeout(timeout)
   }, [displayed, deleting, roleIndex])
 
   return (
     <section id="hero" className="hero">
-      {/* Ambient blobs */}
       <div className="blob hero-blob-1" />
       <div className="blob hero-blob-2" />
-
       <div className="container hero-inner">
         <div className="hero-badge reveal">
-          <span className="badge-dot" /> Disponível para projetos
+          <span className="badge-dot" /> Disponível para oportunidades
         </div>
-
         <h1 className="hero-name reveal delay-1">
           Olá, eu sou<br />
           <span className="name-accent">Marcelo Filho</span>
         </h1>
-
         <p className="hero-role reveal delay-2">
           <span className="role-text">{displayed}</span>
           <span className="cursor" aria-hidden="true">|</span>
         </p>
-
         <p className="hero-desc reveal delay-3">
-          Crio interfaces modernas e performáticas que unem design limpo com
-          código de qualidade. Apaixonado por experiências digitais que fazem
-          diferença.
+          Estudante de Ciência da Computação na UNIFOR, apaixonado por transformar dados em decisões inteligentes. Construo interfaces modernas com React e APIs de alta performance com Python & FastAPI.
         </p>
-
         <div className="hero-actions reveal delay-4">
-          <a href="#projects" className="btn btn-primary">
-            Ver Projetos →
-          </a>
-          <a href="#contact" className="btn btn-outline">
-            Falar comigo
-          </a>
+          <a href="#projects" className="btn btn-primary">Ver Projetos →</a>
+          <a href="#contact" className="btn btn-outline">Falar comigo</a>
         </div>
-
         <div className="hero-stats reveal delay-4">
-          <div className="stat">
-            <span className="stat-num">3+</span>
-            <span className="stat-label">Anos de experiência</span>
-          </div>
+          <div className="stat"><span className="stat-num">6°</span><span className="stat-label">Semestre UNIFOR</span></div>
           <div className="stat-divider" />
-          <div className="stat">
-            <span className="stat-num">20+</span>
-            <span className="stat-label">Projetos entregues</span>
-          </div>
+          <div className="stat"><span className="stat-num">3</span><span className="stat-label">Projetos entregues</span></div>
           <div className="stat-divider" />
-          <div className="stat">
-            <span className="stat-num">100%</span>
-            <span className="stat-label">Foco em qualidade</span>
-          </div>
+          <div className="stat"><span className="stat-num">Avançado</span><span className="stat-label">Inglês</span></div>
         </div>
       </div>
-
       <div className="hero-scroll-hint">
         <div className="scroll-line" />
         <span>scroll</span>
