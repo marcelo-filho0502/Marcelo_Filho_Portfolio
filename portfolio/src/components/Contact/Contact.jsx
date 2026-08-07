@@ -1,9 +1,10 @@
 import './Contact.css'
 
 const SOCIALS = [
-  { label: 'GitHub',   href: 'https://github.com/seu-usuario',     icon: '⬡' },
-  { label: 'LinkedIn', href: 'https://linkedin.com/in/seu-perfil',  icon: '◆' },
-  { label: 'Email',    href: 'mailto:seu@email.com',                icon: '✉' },
+  { label: 'GitHub',   href: 'https://github.com/marcelomrfilho',                          icon: '⬡' },
+  { label: 'LinkedIn', href: 'https://linkedin.com/in/marcelomrfilho',                     icon: '◆' },
+  { label: 'Email',    href: 'mailto:marcelomrfilho@gmail.com',                            icon: '✉' },
+  { label: 'WhatsApp', href: 'https://wa.me/5585991378206',                                icon: '✆' },
 ]
 
 export default function Contact() {
@@ -19,22 +20,13 @@ export default function Contact() {
             <span className="contact-accent">juntos?</span>
           </h2>
           <p className="contact-desc reveal delay-2">
-            Estou aberto a novas oportunidades — seja um emprego full-time,
-            freelance ou uma colaboração em projeto. Se tiver uma ideia,
-            me conta!
+            Estou aberto a novas oportunidades — estágio, emprego full-time ou colaboração em projetos. Se tiver uma ideia ou vaga, me conta!
           </p>
 
           <div className="social-links reveal delay-3">
             {SOCIALS.map((s) => (
-              <a
-                key={s.label}
-                href={s.href}
-                className="social-item"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <span className="social-icon">{s.icon}</span>
-                {s.label}
+              <a key={s.label} href={s.href} className="social-item" target="_blank" rel="noreferrer">
+                <span className="social-icon">{s.icon}</span>{s.label}
               </a>
             ))}
           </div>
@@ -42,7 +34,7 @@ export default function Contact() {
 
         <div className="contact-card reveal delay-2">
           <h3 className="contact-card-title">Manda uma mensagem</h3>
-          <p className="contact-card-sub">Responderei em até 24 horas.</p>
+          <p className="contact-card-sub">Responderei em até 24 horas · marcelomrfilho@gmail.com</p>
 
           <div className="contact-form">
             <div className="field-group">
@@ -55,15 +47,12 @@ export default function Contact() {
             </div>
             <div className="field-group">
               <label>Mensagem</label>
-              <textarea rows="5" placeholder="Me conta seu projeto ou ideia..." />
+              <textarea rows="5" placeholder="Me conta seu projeto ou oportunidade..." />
             </div>
             <button
               className="btn btn-primary contact-send"
               type="button"
-              onClick={() => {
-                // Integre com EmailJS, Formspree ou similar
-                alert('Formulário pronto! Integre com EmailJS ou Formspree.')
-              }}
+              onClick={() => window.open('mailto:marcelomrfilho@gmail.com')}
             >
               Enviar mensagem →
             </button>
