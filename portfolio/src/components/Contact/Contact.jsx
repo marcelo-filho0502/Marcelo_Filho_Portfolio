@@ -1,8 +1,8 @@
 import './Contact.css'
 
 const SOCIALS = [
-  { label: 'GitHub',   href: 'https://github.com/marcelomrfilho',                          icon: '⬡' },
-  { label: 'LinkedIn', href: 'https://linkedin.com/in/marcelomrfilho',                     icon: '◆' },
+  { label: 'GitHub',   href: 'https://github.com/marcelo-filho0502',                          icon: '⬡' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/marcelo-de-magalh%C3%A3es-rodrigues-filho-b8751a305/',                     icon: '◆' },
   { label: 'Email',    href: 'mailto:marcelomrfilho@gmail.com',                            icon: '✉' },
   { label: 'WhatsApp', href: 'https://wa.me/5585991378206',                                icon: '✆' },
 ]
@@ -20,7 +20,7 @@ export default function Contact() {
             <span className="contact-accent">juntos?</span>
           </h2>
           <p className="contact-desc reveal delay-2">
-            Estou aberto a novas oportunidades — estágio, emprego full-time ou colaboração em projetos. Se tiver uma ideia ou vaga, me conta!
+            Estou aberto a novas oportunidades — estágio ou colaboração em projetos. Se tiver uma ideia ou vaga, me conta!
           </p>
 
           <div className="social-links reveal delay-3">

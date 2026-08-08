@@ -3,12 +3,12 @@ import './Projects.css'
 const PROJECTS = [
   {
     number: '01',
-    title: 'Make at Home',
+    title: 'Dish at Home',
     period: 'Jul. 2026 – Presente',
     desc: 'Ecossistema de microsserviços para sugestão de receitas com IA. O usuário informa os ingredientes disponíveis e um Agente Inteligente adapta receitas e sugere substituições em tempo real via LLMs.',
     tags: ['React', 'TypeScript', 'Vite', 'TailwindCSS', 'Python', 'FastAPI', 'Prompt Engineering', 'LLM'],
     liveUrl: '#',
-    repoUrl: 'https://github.com/marcelomrfilho',
+    repoUrl: 'https://github.com/marcelo-filho0502/Dish_at_home',
     featured: true,
   },
   {
@@ -18,7 +18,7 @@ const PROJECTS = [
     desc: 'Aplicação web para gerenciamento reativo de filas de atendimento no NAMI. Desenvolvida após levantamento direto de requisitos com o gestor, com foco em otimizar o tempo de espera dos pacientes.',
     tags: ['React', 'JavaScript', 'Vite', 'React Hooks'],
     liveUrl: '#',
-    repoUrl: 'https://github.com/marcelomrfilho',
+    repoUrl: 'https://github.com/marcelo-filho0502/FilaNami',
   },
   {
     number: '03',
