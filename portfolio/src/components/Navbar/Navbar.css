@@ -1,0 +1,98 @@
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 1.25rem 2rem;
+  transition: background 0.4s ease, padding 0.3s ease, border-color 0.4s ease;
+  border-bottom: 1px solid transparent;
+}
+.navbar.scrolled {
+  background: rgba(10, 10, 15, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 0.85rem 2rem;
+  border-bottom-color: var(--border);
+}
+.nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-1);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+}
+.logo-dot { color: var(--accent); }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  list-style: none;
+}
+.nav-links a {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-2);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--text-1); }
+
+.nav-cta {
+  padding: 0.5rem 1.2rem !important;
+  font-size: 0.85rem !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-sm) !important;
+  color: var(--text-1) !important;
+  transition: border-color 0.2s, color 0.2s !important;
+}
+.nav-cta:hover {
+  border-color: var(--accent) !important;
+  color: var(--accent) !important;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.hamburger span {
+  display: block;
+  width: 24px; height: 2px;
+  background: var(--text-1);
+  border-radius: 2px;
+  transition: var(--transition);
+  transform-origin: center;
+}
+.hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+@media (max-width: 768px) {
+  .hamburger { display: flex; }
+  .nav-links {
+    position: fixed;
+    inset: 0;
+    background: var(--bg);
+    flex-direction: column;
+    justify-content: center;
+    gap: 2.5rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  .nav-links.open { opacity: 1; pointer-events: all; }
+  .nav-links a { font-size: 1.3rem; color: var(--text-1); }
+}
