@@ -67,7 +67,7 @@ export default function Projects() {
           {PROJECTS.map((p, i) => (<ProjectCard key={p.number} project={p} delay={(i % 3) + 1} />))}
         </div>
         <div className="projects-cta reveal">
-          <a href="https://github.com/marcelomrfilho" className="btn btn-outline" target="_blank" rel="noreferrer">
+          <a href="https://github.com/marcelo-filho0502" className="btn btn-outline" target="_blank" rel="noreferrer">
             Ver todos no GitHub →
           </a>
         </div>
