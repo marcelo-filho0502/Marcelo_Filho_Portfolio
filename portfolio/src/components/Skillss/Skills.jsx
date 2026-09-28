@@ -1,3 +1,4 @@
+import { useLang } from '../../i18n/LanguageContext'
 import { useEffect, useRef } from 'react'
 import './Skills.css'
 
@@ -18,6 +19,7 @@ const TECHS = [
 ]
 
 export default function Skills() {
+  const { t } = useLang()
   const barsRef = useRef([])
 
   useEffect(() => {
@@ -33,10 +35,10 @@ export default function Skills() {
     <section id="skills" className="skills">
       <div className="container">
         <div className="skills-header">
-          <p className="section-label reveal">Habilidades</p>
-          <h2 className="section-title reveal delay-1">Tecnologias que eu uso</h2>
+          <p className="section-label reveal">{t.skillsLabel}</p>
+          <h2 className="section-title reveal delay-1">{t.skillsTitle}</h2>
           <p className="section-desc reveal delay-2">
-            Stack completo — do frontend responsivo com React até APIs assíncronas com Python, passando por análise de dados e engenharia de prompts com LLMs.
+            {t.skillsDesc}
           </p>
         </div>
 
@@ -60,9 +62,9 @@ export default function Skills() {
           </div>
 
           <div className="tech-tags reveal delay-3">
-            <h3 className="tech-tags-title">Ferramentas & Tecnologias</h3>
+            <h3 className="tech-tags-title">{t.skillsTools}</h3>
             <div className="tags-wrap">
-              {TECHS.map((tech) => (<span key={tech} className="tech-tag">{tech}</span>))}
+              {TECHS.map((tech) => (<span key={tech} className="tech-tag">{t[tech] || tech}</span>))}
             </div>
           </div>
         </div>

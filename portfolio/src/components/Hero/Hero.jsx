@@ -1,17 +1,14 @@
+import { useLang } from '../../i18n/LanguageContext'
 import { useEffect, useState } from 'react'
 import './Hero.css'
 
-const ROLES = [
-  'Desenvolvedor Frontend',
-  'Desenvolvedor Full Stack',
-  'Engenheiro de Software',
-  'Prompt Engineer & Dev',
-]
-
 export default function Hero() {
+  const { t, lang } = useLang()
+  const ROLES = t.roles
   const [roleIndex, setRoleIndex] = useState(0)
   const [displayed, setDisplayed] = useState('')
   const [deleting, setDeleting] = useState(false)
+  useEffect(() => { setDisplayed(''); setDeleting(false); setRoleIndex(0) }, [lang])
 
   useEffect(() => {
     const current = ROLES[roleIndex]
@@ -27,7 +24,7 @@ export default function Hero() {
       setRoleIndex((i) => (i + 1) % ROLES.length)
     }
     return () => clearTimeout(timeout)
-  }, [displayed, deleting, roleIndex])
+  }, [displayed, deleting, roleIndex, ROLES])
 
   return (
     <section id="hero" className="hero">
@@ -35,10 +32,10 @@ export default function Hero() {
       <div className="blob hero-blob-2" />
       <div className="container hero-inner">
         <div className="hero-badge reveal">
-          <span className="badge-dot" /> Disponível para oportunidades
+          <span className="badge-dot" /> {t.heroBadge}
         </div>
         <h1 className="hero-name reveal delay-1">
-          Olá, eu sou<br />
+          {t.heroHi}<br />
           <span className="name-accent">Marcelo Filho</span>
         </h1>
         <p className="hero-role reveal delay-2">
@@ -46,18 +43,18 @@ export default function Hero() {
           <span className="cursor" aria-hidden="true">|</span>
         </p>
         <p className="hero-desc reveal delay-3">
-          Estudante de Ciência da Computação na UNIFOR, apaixonado por transformar dados em decisões inteligentes. Construo interfaces modernas com React e APIs de alta performance com Python & FastAPI.
+          {t.heroDesc}
         </p>
         <div className="hero-actions reveal delay-4">
-          <a href="#projects" className="btn btn-primary">Ver Projetos →</a>
-          <a href="#contact" className="btn btn-outline">Falar comigo</a>
+          <a href="#projects" className="btn btn-primary">{t.heroProjects}</a>
+          <a href="#contact" className="btn btn-outline">{t.heroTalk}</a>
         </div>
         <div className="hero-stats reveal delay-4">
-          <div className="stat"><span className="stat-num">6°</span><span className="stat-label">Semestre UNIFOR</span></div>
+          <div className="stat"><span className="stat-num">{t.heroSemNum}</span><span className="stat-label">{t.heroSem}</span></div>
           <div className="stat-divider" />
-          <div className="stat"><span className="stat-num">3</span><span className="stat-label">Projetos entregues</span></div>
+          <div className="stat"><span className="stat-num">3</span><span className="stat-label">{t.heroDelivered}</span></div>
           <div className="stat-divider" />
-          <div className="stat"><span className="stat-num">Avançado</span><span className="stat-label">Inglês</span></div>
+          <div className="stat"><span className="stat-num">{t.heroAdv}</span><span className="stat-label">{t.heroEn}</span></div>
         </div>
       </div>
       <div className="hero-scroll-hint">

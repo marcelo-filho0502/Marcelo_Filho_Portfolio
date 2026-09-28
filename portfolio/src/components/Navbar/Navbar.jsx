@@ -1,14 +1,17 @@
+import { useLang } from '../../i18n/LanguageContext'
+import LangToggle from '../LangToggle/LangToggle'
 import { useState, useEffect } from 'react'
 import './Navbar.css'
 
 const links = [
-  { href: '#about',    label: 'Sobre' },
-  { href: '#skills',   label: 'Skills' },
-  { href: '#projects', label: 'Projetos' },
-  { href: '#contact',  label: 'Contato' },
+  { href: '#about',    label: 'navAbout' },
+  { href: '#skills',   label: 'navSkills' },
+  { href: '#projects', label: 'navProjects' },
+  { href: '#contact',  label: 'navContact' },
 ]
 
 export default function Navbar() {
+  const { t } = useLang()
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
 
@@ -30,7 +33,7 @@ export default function Navbar() {
         <ul className={`nav-links${menuOpen ? ' open' : ''}`}>
           {links.map((l) => (
             <li key={l.href}>
-              <a href={l.href} onClick={closeMenu}>{l.label}</a>
+              <a href={l.href} onClick={closeMenu}>{t[l.label]}</a>
             </li>
           ))}
           <li>
@@ -40,9 +43,10 @@ export default function Navbar() {
               target="_blank"
               rel="noreferrer"
             >
-              Currículo ↗
+              {t.navCv}
             </a>
           </li>
+          <li><LangToggle /></li>
         </ul>
 
         <button

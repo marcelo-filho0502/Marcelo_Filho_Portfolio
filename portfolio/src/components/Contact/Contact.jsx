@@ -1,3 +1,4 @@
+import { useLang } from '../../i18n/LanguageContext'
 import './Contact.css'
 
 const SOCIALS = [
@@ -8,19 +9,20 @@ const SOCIALS = [
 ]
 
 export default function Contact() {
+  const { t } = useLang()
   return (
     <section id="contact" className="contact">
       <div className="contact-blob" />
       <div className="container contact-inner">
 
         <div className="contact-text">
-          <p className="section-label reveal">Contato</p>
+          <p className="section-label reveal">{t.contactLabel}</p>
           <h2 className="section-title reveal delay-1">
-            Vamos construir algo<br />
-            <span className="contact-accent">juntos?</span>
+            {t.contactT1}<br />
+            <span className="contact-accent">{t.contactT2}</span>
           </h2>
           <p className="contact-desc reveal delay-2">
-            Estou aberto a novas oportunidades — estágio ou colaboração em projetos. Se tiver uma ideia ou vaga, me conta!
+            {t.contactDesc}
           </p>
 
           <div className="social-links reveal delay-3">
@@ -33,28 +35,28 @@ export default function Contact() {
         </div>
 
         <div className="contact-card reveal delay-2">
-          <h3 className="contact-card-title">Manda uma mensagem</h3>
-          <p className="contact-card-sub">Responderei em até 24 horas · marcelomrfilho@gmail.com</p>
+          <h3 className="contact-card-title">{t.cardTitle}</h3>
+          <p className="contact-card-sub">{t.cardSub}</p>
 
           <div className="contact-form">
             <div className="field-group">
-              <label>Nome</label>
-              <input type="text" placeholder="Seu nome" />
+              <label>{t.fName}</label>
+              <input type="text" placeholder={t.phName} />
             </div>
             <div className="field-group">
               <label>Email</label>
               <input type="email" placeholder="seu@email.com" />
             </div>
             <div className="field-group">
-              <label>Mensagem</label>
-              <textarea rows="5" placeholder="Me conta seu projeto ou oportunidade..." />
+              <label>{t.fMsg}</label>
+              <textarea rows="5" placeholder={t.phMsg} />
             </div>
             <button
               className="btn btn-primary contact-send"
               type="button"
               onClick={() => window.open('mailto:marcelomrfilho@gmail.com')}
             >
-              Enviar mensagem →
+              {t.send}
             </button>
           </div>
         </div>
