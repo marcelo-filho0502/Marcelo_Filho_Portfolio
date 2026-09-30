@@ -65,7 +65,7 @@
 .tech-tag:hover {
   border-color: var(--accent);
   color: var(--accent);
-  background: rgba(108,99,255,0.12);
+  background: rgba(var(--accent-rgb), 0.12);
   transform: translateY(-2px);
 }
 

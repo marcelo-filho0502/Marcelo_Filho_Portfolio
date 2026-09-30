@@ -7,15 +7,6 @@ export default function About() {
     <section id="about" className="about">
       <div className="container about-inner">
 
-        <div className="about-image-col reveal">
-          <div className="about-img-wrapper">
-            <div className="about-img-placeholder">
-              <span>{t.aboutPhoto}</span>
-            </div>
-            <div className="about-img-deco" />
-          </div>
-        </div>
-
         <div className="about-content">
           <p className="section-label reveal">{t.aboutLabel}</p>
           <h2 className="section-title reveal delay-1">

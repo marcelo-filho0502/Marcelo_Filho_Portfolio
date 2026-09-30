@@ -5,13 +5,22 @@
   --bg:           #0A0A0F;
   --bg-card:      #12121A;
   --bg-hover:     #1A1A2E;
+  --accent-rgb:   108, 99, 255;
   --accent:       #6C63FF;
-  --accent-dim:   rgba(108, 99, 255, 0.15);
-  --accent-glow:  rgba(108, 99, 255, 0.35);
+  --accent-hover: #7c74ff;
+  --accent-2:     #a78bfa;
+  --accent-dim:   rgba(var(--accent-rgb), 0.15);
+  --accent-glow:  rgba(var(--accent-rgb), 0.35);
   --text-1:       #F0F0F0;
   --text-2:       #A8A8B3;
   --text-3:       #6B6B78;
   --border:       rgba(255, 255, 255, 0.07);
+  --name-start:   #ffffff;
+  --success:      #4ade80;
+  --shadow-card:  rgba(0, 0, 0, 0.4);
+  --shine:        rgba(255, 255, 255, 0.07);
+  --card-featured: linear-gradient(135deg, #12121A 0%, #1A1A2E 100%);
+  --nav-bg:       rgba(10, 10, 15, 0.88);
   --radius-sm:    8px;
   --radius-md:    14px;
   --radius-lg:    24px;
@@ -19,6 +28,31 @@
   --font-body:    'Inter', sans-serif;
   --transition:   0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --section-gap:  120px;
+  color-scheme: dark;
+}
+
+/* ── LIGHT MODE: off-white + laranja ── */
+:root[data-theme='light'] {
+  --bg:           #FAF6EF;
+  --bg-card:      #FFFFFF;
+  --bg-hover:     #F6ECDD;
+  --accent-rgb:   194, 65, 12;
+  --accent:       #C2410C;
+  --accent-hover: #EA580C;
+  --accent-2:     #F97316;
+  --accent-dim:   rgba(var(--accent-rgb), 0.12);
+  --accent-glow:  rgba(var(--accent-rgb), 0.28);
+  --text-1:       #2B2118;
+  --text-2:       #5C4B3D;
+  --text-3:       #7A6756;
+  --border:       rgba(90, 50, 20, 0.14);
+  --name-start:   #2B2118;
+  --success:      #15803D;
+  --shadow-card:  rgba(154, 80, 20, 0.18);
+  --shine:        rgba(255, 255, 255, 0.55);
+  --card-featured: linear-gradient(135deg, #FFF4E8 0%, #FFE4C8 100%);
+  --nav-bg:       rgba(250, 246, 239, 0.9);
+  color-scheme: light;
 }
 
 /* ── RESET ── */
@@ -41,6 +75,7 @@ body {
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 ::selection { background: var(--accent); color: #fff; }
@@ -117,7 +152,7 @@ section { padding: var(--section-gap) 0; }
   box-shadow: 0 0 24px var(--accent-glow);
 }
 .btn-primary:hover {
-  background: #7c74ff;
+  background: var(--accent-hover);
   transform: translateY(-2px);
   box-shadow: 0 0 36px var(--accent-glow);
 }

@@ -36,7 +36,7 @@ export default function CursorFX() {
     const burst = (x, y, n, v) => {
       for (let i = 0; i < n; i++) {
         const a = Math.random() * Math.PI * 2, s = (0.3 + Math.random()) * v
-        parts.push({ x, y, vx: Math.cos(a) * s, vy: Math.sin(a) * s, life: 1, r: 1.5 + Math.random() * 2.5, hue: 240 + Math.random() * 60 })
+        parts.push({ x, y, vx: Math.cos(a) * s, vy: Math.sin(a) * s, life: 1, r: 1.5 + Math.random() * 2.5, hue: root.dataset.theme === 'light' ? 15 + Math.random() * 30 : 240 + Math.random() * 60 })
       }
       if (parts.length > 220) parts = parts.slice(-220)
     }
@@ -116,12 +116,13 @@ export default function CursorFX() {
       }
 
       ctx.clearRect(0, 0, vw(), vh())
-      ctx.globalCompositeOperation = 'lighter'
+      const light = root.dataset.theme === 'light'
+      ctx.globalCompositeOperation = light ? 'source-over' : 'lighter'
       parts = parts.filter((p) => {
         p.x += p.vx; p.y += p.vy; p.vy += 0.02; p.vx *= 0.985; p.life -= 0.02
         if (p.life <= 0) return false
         ctx.globalAlpha = p.life * 0.9
-        ctx.fillStyle = `hsl(${p.hue}, 90%, 65%)`
+        ctx.fillStyle = `hsl(${p.hue}, 90%, ${light ? 52 : 65}%)`
         ctx.beginPath(); ctx.arc(p.x, p.y, p.r * p.life, 0, Math.PI * 2); ctx.fill()
         return true
       })

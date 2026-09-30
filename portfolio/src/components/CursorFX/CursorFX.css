@@ -1,10 +1,10 @@
 .fx-spot, .fx-canvas, .fx-ring, .fx-dot { position: fixed; pointer-events: none; display: none; }
 html.fx-on .fx-spot, html.fx-on .fx-canvas, html.fx-on .fx-ring, html.fx-on .fx-dot { display: block; }
-.fx-spot { inset: 0; z-index: 0; background: radial-gradient(520px circle at var(--sx, 50%) var(--sy, 50%), rgba(108, 99, 255, 0.13), transparent 65%); }
+.fx-spot { inset: 0; z-index: 0; background: radial-gradient(520px circle at var(--sx, 50%) var(--sy, 50%), rgba(var(--accent-rgb), 0.13), transparent 65%); }
 .fx-canvas { inset: 0; width: 100%; height: 100%; z-index: 9998; }
 .fx-ring, .fx-dot { top: 0; left: 0; z-index: 9999; border-radius: 50%; will-change: transform; }
 .fx-dot { width: 8px; height: 8px; margin: -4px 0 0 -4px; background: var(--accent); box-shadow: 0 0 12px var(--accent-glow); }
-.fx-ring { width: 38px; height: 38px; margin: -19px 0 0 -19px; border: 1.5px solid rgba(108, 99, 255, 0.55); transition: width 0.25s, height 0.25s, margin 0.25s, background 0.25s, border-color 0.25s; }
+.fx-ring { width: 38px; height: 38px; margin: -19px 0 0 -19px; border: 1.5px solid rgba(var(--accent-rgb), 0.55); transition: width 0.25s, height 0.25s, margin 0.25s, background 0.25s, border-color 0.25s; }
 .fx-ring.hot { width: 64px; height: 64px; margin: -32px 0 0 -32px; background: var(--accent-dim); border-color: var(--accent); }
 .fx-ring.down { width: 26px; height: 26px; margin: -13px 0 0 -13px; }
 
@@ -17,12 +17,12 @@ html.fx-on input, html.fx-on textarea { cursor: text; }
   transition: transform 0.15s ease-out, border-color 0.3s, box-shadow 0.3s;
   transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(var(--lift, 0px));
 }
-.fx-tilt::after { content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity 0.3s; background: radial-gradient(360px circle at var(--gx, 50%) var(--gy, 50%), rgba(255, 255, 255, 0.07), rgba(108, 99, 255, 0.12) 35%, transparent 65%); }
+.fx-tilt::after { content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity 0.3s; background: radial-gradient(360px circle at var(--gx, 50%) var(--gy, 50%), var(--shine), rgba(var(--accent-rgb), 0.12) 35%, transparent 65%); }
 .fx-tilt:hover::after { opacity: 1; }
 
 /* tags crescem e brilham conforme o cursor se aproxima */
 .tech-tags .tech-tag {
   transform: translateY(calc(var(--near, 0) * -3px)) scale(calc(1 + var(--near, 0) * 0.16));
-  border-color: rgba(108, 99, 255, calc(0.07 + var(--near, 0) * 0.7));
-  box-shadow: 0 0 calc(var(--near, 0) * 16px) rgba(108, 99, 255, calc(var(--near, 0) * 0.45));
+  border-color: rgba(var(--accent-rgb), calc(0.07 + var(--near, 0) * 0.7));
+  box-shadow: 0 0 calc(var(--near, 0) * 16px) rgba(var(--accent-rgb), calc(var(--near, 0) * 0.45));
 }

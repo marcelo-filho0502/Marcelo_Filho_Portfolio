@@ -1,5 +1,6 @@
 import { useLang } from '../../i18n/LanguageContext'
 import LangToggle from '../LangToggle/LangToggle'
+import ThemeToggle from '../ThemeToggle/ThemeToggle'
 import { useState, useEffect } from 'react'
 import './Navbar.css'
 
@@ -47,6 +48,7 @@ export default function Navbar() {
             </a>
           </li>
           <li><LangToggle /></li>
+          <li><ThemeToggle /></li>
         </ul>
 
         <button
