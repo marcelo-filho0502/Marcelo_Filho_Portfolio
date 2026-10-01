@@ -7,6 +7,7 @@ import Skills   from './components/Skillss/Skills'
 import Projects from './components/Projec/Projects'
 import Contact  from './components/Contact/Contact'
 import CursorFX from './components/CursorFX/CursorFX'
+import VideoBackground from './components/VideoBackground/VideoBackground'
 import './styles/global.css'
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
 
   return (
     <div className="app">
+      <VideoBackground />
       <CursorFX />
       <Navbar />
       <main>

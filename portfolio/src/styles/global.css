@@ -65,7 +65,7 @@ html {
 }
 ::-webkit-scrollbar        { width: 5px; }
 ::-webkit-scrollbar-track  { background: var(--bg-card); }
-::-webkit-scrollbar-thumb  { background: var(--accent); border-radius: 3px; }
+::-webkit-scrollbar-thumb  { background: rgba(255, 255, 255, 0.2); border-radius: 3px; }
 
 body {
   background: var(--bg);
@@ -78,7 +78,7 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-::selection { background: var(--accent); color: #fff; }
+::selection { background: rgba(255, 255, 255, 0.2); color: #fff; }
 
 /* ── LAYOUT ── */
 .container {
@@ -147,12 +147,12 @@ section { padding: var(--section-gap) 0; }
   border: none;
 }
 .btn-primary {
-  background: var(--accent);
+  background: rgba(255, 255, 255, 0.2);
   color: #fff;
   box-shadow: 0 0 24px var(--accent-glow);
 }
 .btn-primary:hover {
-  background: var(--accent-hover);
+  background: rgba(255, 255, 255, 0.2);
   transform: translateY(-2px);
   box-shadow: 0 0 36px var(--accent-glow);
 }
@@ -175,3 +175,26 @@ section { padding: var(--section-gap) 0; }
   color: var(--text-3);
   font-size: 0.82rem;
 }
+
+/* ── TEMA VÍDEO: componentes transparentes + letras brancas ── */
+:root {
+  --bg: transparent;
+  --bg-card: transparent;
+  --bg-hover: rgba(255, 255, 255, 0.08);
+  --card-featured: transparent;
+  --accent: #fff;
+  --accent-hover: #fff;
+  --accent-2: #fff;
+  --accent-rgb: 255, 255, 255;
+  --text-1: #fff;
+  --text-2: rgba(255, 255, 255, 0.88);
+  --text-3: rgba(255, 255, 255, 0.7);
+  --border: rgba(255, 255, 255, 0.28);
+  --nav-bg: rgba(0, 0, 0, 0.35);
+  --scrim: rgba(0, 0, 0, 0.42); /* escurece o vídeo p/ leitura — ajuste aqui */
+}
+html { background: #000; }
+body, .app { background: transparent; }
+body { text-shadow: 0 1px 12px rgba(0, 0, 0, 0.45); }
+.btn-primary { background: transparent; color: #fff; border: 1px solid #fff; }
+.btn-primary:hover, .btn-outline:hover { background: rgba(255, 255, 255, 0.18); color: #fff; }

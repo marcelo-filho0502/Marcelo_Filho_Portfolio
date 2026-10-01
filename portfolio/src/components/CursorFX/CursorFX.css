@@ -3,7 +3,7 @@ html.fx-on .fx-spot, html.fx-on .fx-canvas, html.fx-on .fx-ring, html.fx-on .fx-
 .fx-spot { inset: 0; z-index: 0; background: radial-gradient(520px circle at var(--sx, 50%) var(--sy, 50%), rgba(var(--accent-rgb), 0.13), transparent 65%); }
 .fx-canvas { inset: 0; width: 100%; height: 100%; z-index: 9998; }
 .fx-ring, .fx-dot { top: 0; left: 0; z-index: 9999; border-radius: 50%; will-change: transform; }
-.fx-dot { width: 8px; height: 8px; margin: -4px 0 0 -4px; background: var(--accent); box-shadow: 0 0 12px var(--accent-glow); }
+.fx-dot { width: 8px; height: 8px; margin: -4px 0 0 -4px; background: rgba(255, 255, 255, 0.2); box-shadow: 0 0 12px var(--accent-glow); }
 .fx-ring { width: 38px; height: 38px; margin: -19px 0 0 -19px; border: 1.5px solid rgba(var(--accent-rgb), 0.55); transition: width 0.25s, height 0.25s, margin 0.25s, background 0.25s, border-color 0.25s; }
 .fx-ring.hot { width: 64px; height: 64px; margin: -32px 0 0 -32px; background: var(--accent-dim); border-color: var(--accent); }
 .fx-ring.down { width: 26px; height: 26px; margin: -13px 0 0 -13px; }

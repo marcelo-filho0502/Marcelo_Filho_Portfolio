@@ -12,7 +12,7 @@
   border-radius: 50%;
   filter: blur(80px);
   pointer-events: none;
-  background: radial-gradient(circle, rgba(var(--accent-rgb), 0.18) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.18) 0%, transparent 70%);
   top: -100px; right: -200px;
   animation: floatBlob 12s ease-in-out infinite alternate;
 }
@@ -22,7 +22,7 @@
   border-radius: 50%;
   filter: blur(80px);
   pointer-events: none;
-  background: radial-gradient(circle, rgba(var(--accent-rgb), 0.1) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.1) 0%, transparent 70%);
   bottom: 50px; left: -150px;
   animation: floatBlob 9s ease-in-out infinite alternate-reverse;
 }
@@ -74,7 +74,7 @@
   margin-bottom: 1.25rem;
 }
 .name-accent {
-  background: linear-gradient(135deg, var(--name-start) 30%, var(--accent) 100%);
+  background: linear-gradient(135deg, #fff, #fff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -130,12 +130,12 @@
   border: none;
 }
 .btn-primary {
-  background: var(--accent);
+  background: rgba(255, 255, 255, 0.2);
   color: #fff;
   box-shadow: 0 0 24px rgba(var(--accent-rgb), 0.35);
 }
 .btn-primary:hover {
-  background: var(--accent-hover);
+  background: rgba(255, 255, 255, 0.2);
   transform: translateY(-2px);
   box-shadow: 0 0 36px rgba(var(--accent-rgb), 0.45);
 }
