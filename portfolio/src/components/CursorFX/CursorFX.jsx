@@ -2,15 +2,11 @@ import { useEffect, useRef } from 'react'
 import './CursorFX.css'
 
 const MAGNETIC = '.btn, .social-item, .nav-logo'
-const TILT = '.project-card, .contact-card'
-const HOT = 'a, button, input, textarea, .project-card, .tech-tag'
+const TILT = '.project-card, .contact-card, .exp-card'
 const vw = () => window.innerWidth
 const vh = () => window.innerHeight
 
 export default function CursorFX() {
-  const cv = useRef(null)
-  const dot = useRef(null)
-  const ring = useRef(null)
   const spot = useRef(null)
 
   useEffect(() => {
@@ -18,28 +14,14 @@ export default function CursorFX() {
     if (!fine || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
     const root = document.documentElement
-    const ctx = cv.current.getContext('2d')
     const blobs = [...document.querySelectorAll('.hero-blob-1, .hero-blob-2')]
     const tags = document.getElementsByClassName('tech-tag')
     const mouse = { x: vw() / 2, y: vh() / 2 }
     const eased = { ...mouse }
     const par = { x: 0, y: 0 }
     const mags = new Map()
-    let parts = [], last = { ...mouse }, tilted = null, hot = false, moved = false, raf = 0
+    let tilted = null, moved = false, raf = 0
 
-    const resize = () => {
-      const dpr = Math.min(window.devicePixelRatio || 1, 2)
-      cv.current.width = vw() * dpr
-      cv.current.height = vh() * dpr
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
-    }
-    const burst = (x, y, n, v) => {
-      for (let i = 0; i < n; i++) {
-        const a = Math.random() * Math.PI * 2, s = (0.3 + Math.random()) * v
-        parts.push({ x, y, vx: Math.cos(a) * s, vy: Math.sin(a) * s, life: 1, r: 1.5 + Math.random() * 2.5, hue: root.dataset.theme === 'light' ? 15 + Math.random() * 30 : 240 + Math.random() * 60 })
-      }
-      if (parts.length > 220) parts = parts.slice(-220)
-    }
     const setTilt = (el, rx, ry, lift) => {
       el.style.setProperty('--rx', rx + 'deg')
       el.style.setProperty('--ry', ry + 'deg')
@@ -49,12 +31,8 @@ export default function CursorFX() {
     const onMove = (e) => {
       mouse.x = e.clientX; mouse.y = e.clientY; moved = true
       root.classList.add('fx-on')
-      const d = Math.hypot(mouse.x - last.x, mouse.y - last.y)
-      if (d > 8) { burst(mouse.x, mouse.y, d > 40 ? 2 : 1, 0.8); last = { ...mouse } }
 
       const el = e.target.closest ? e.target : null
-      const h = !!el?.closest(HOT)
-      if (h !== hot) { hot = h; ring.current.classList.toggle('hot', h) }
 
       const mag = el?.closest(MAGNETIC)
       mags.forEach((m, k) => { if (k !== mag) { m.tx = 0; m.ty = 0 } })
@@ -84,15 +62,11 @@ export default function CursorFX() {
       tilted = null
       mags.forEach((m) => { m.tx = 0; m.ty = 0 })
     }
-    const onDown = (e) => { ring.current.classList.add('down'); burst(e.clientX, e.clientY, 18, 4) }
-    const onUp = () => ring.current.classList.remove('down')
     const onScroll = () => { moved = true }
 
     const frame = () => {
       eased.x += (mouse.x - eased.x) * 0.16
       eased.y += (mouse.y - eased.y) * 0.16
-      dot.current.style.transform = `translate3d(${mouse.x}px,${mouse.y}px,0)`
-      ring.current.style.transform = `translate3d(${eased.x}px,${eased.y}px,0)`
       spot.current.style.setProperty('--sx', eased.x + 'px')
       spot.current.style.setProperty('--sy', eased.y + 'px')
 
@@ -115,36 +89,17 @@ export default function CursorFX() {
         }
       }
 
-      ctx.clearRect(0, 0, vw(), vh())
-      const light = root.dataset.theme === 'light'
-      ctx.globalCompositeOperation = light ? 'source-over' : 'lighter'
-      parts = parts.filter((p) => {
-        p.x += p.vx; p.y += p.vy; p.vy += 0.02; p.vx *= 0.985; p.life -= 0.02
-        if (p.life <= 0) return false
-        ctx.globalAlpha = p.life * 0.9
-        ctx.fillStyle = `hsl(${p.hue}, 90%, ${light ? 52 : 65}%)`
-        ctx.beginPath(); ctx.arc(p.x, p.y, p.r * p.life, 0, Math.PI * 2); ctx.fill()
-        return true
-      })
-      ctx.globalAlpha = 1
       raf = requestAnimationFrame(frame)
     }
 
-    resize()
-    window.addEventListener('resize', resize)
     window.addEventListener('pointermove', onMove, { passive: true })
-    window.addEventListener('pointerdown', onDown)
-    window.addEventListener('pointerup', onUp)
     window.addEventListener('scroll', onScroll, { passive: true })
     root.addEventListener('mouseleave', onLeave)
     raf = requestAnimationFrame(frame)
 
     return () => {
       cancelAnimationFrame(raf)
-      window.removeEventListener('resize', resize)
       window.removeEventListener('pointermove', onMove)
-      window.removeEventListener('pointerdown', onDown)
-      window.removeEventListener('pointerup', onUp)
       window.removeEventListener('scroll', onScroll)
       root.removeEventListener('mouseleave', onLeave)
       root.classList.remove('fx-on')
@@ -155,9 +110,6 @@ export default function CursorFX() {
   return (
     <>
       <div ref={spot} className="fx-spot" aria-hidden="true" />
-      <canvas ref={cv} className="fx-canvas" aria-hidden="true" />
-      <div ref={ring} className="fx-ring" aria-hidden="true" />
-      <div ref={dot} className="fx-dot" aria-hidden="true" />
     </>
   )
 }

@@ -4,6 +4,7 @@ import Navbar   from './components/Navbar/Navbar'
 import Hero     from './components/Hero/Hero'
 import About    from './components/About/About'
 import Skills   from './components/Skillss/Skills'
+import Experience from './components/Experience/Experience'
 import Projects from './components/Projec/Projects'
 import Contact  from './components/Contact/Contact'
 import CursorFX from './components/CursorFX/CursorFX'
@@ -34,6 +35,7 @@ function App() {
         <Hero />
         <About />
         <Skills />
+        <Experience />
         <Projects />
         <Contact />
       </main>
